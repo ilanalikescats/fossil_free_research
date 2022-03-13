@@ -107,3 +107,29 @@ section {
     justify-content: flex-start;
     gap: 2rem;
 }
+
+.sign-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.sign-button {
+    display: block;
+    border: 2px solid var(--color-brand);
+    width: max-content;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    margin: 4rem 0;
+    background-color: white;
+    font-family: "Staatliches", cursive;
+    color: var(--color-brand);
+    padding: 1rem;
+    cursor: pointer;
+}
+.sign-button:hover,
+.sign-button:target {
+    background-color: rgb(245, 245, 245);
+}
+.sign-button:active {
+    background-color: rgb(240, 240, 240);
+}
