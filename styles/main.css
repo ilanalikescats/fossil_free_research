@@ -1,6 +1,7 @@
 :root {
     --color-brand: #2a3e7e;
 }
+
 .color-brand {
     color: var(--color-brand);
 }
@@ -8,6 +9,7 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     width: 100%;
     padding: 0;
@@ -27,12 +29,21 @@ h5 {
     margin: 0;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+.ul {
+    text-decoration: underline;
+}
+
 nav {
     width: 100%;
     padding: 1rem 0;
     border-bottom: 4px solid var(--color-brand);
     position: relative;
 }
+
 .nav-items {
     list-style: none;
     margin: 0;
@@ -41,20 +52,24 @@ nav {
     align-items: center;
     gap: 2rem;
 }
+
 .nav-item a {
     text-align: center;
     color: inherit;
     text-decoration: none;
     font-weight: bold;
 }
+
 .logo {
     margin-right: auto;
 }
+
 .nav-toggle {
     display: none;
     position: absolute;
     right: 0;
 }
+
 #title {
     font-size: 5rem;
     text-align: left;
@@ -82,7 +97,7 @@ nav {
     }
 }
 
-section > h2 {
+section>h2 {
     font-size: 4rem;
     width: 16rem;
     line-height: 3.5rem;
@@ -98,7 +113,8 @@ section {
 #signatories-list {
     padding: 1em;
 }
-#signatories-list > li + li {
+
+#signatories-list>li+li {
     margin-top: 1rem;
 }
 
@@ -113,6 +129,7 @@ section {
     display: flex;
     justify-content: center;
 }
+
 .sign-button {
     display: block;
     border: 2px solid var(--color-brand);
@@ -126,10 +143,12 @@ section {
     padding: 1rem;
     cursor: pointer;
 }
+
 .sign-button:hover,
 .sign-button:target {
     background-color: rgb(245, 245, 245);
 }
+
 .sign-button:active {
     background-color: rgb(240, 240, 240);
 }
