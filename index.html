@@ -24,6 +24,7 @@
                 <li class="nav-item"><a href="#who">Who we are</a></li>
                 <li class="nav-item"><a href="#letter">Our Letter</a></li>
                 <li class="nav-item"><a href="#faqs">FAQs</a></li>
+                <li class="nav-item"><a href="#coverage">Coverage</a></li>
                 <li class="nav-item"><a href="#contact">Contact Us</a></li>
                 <li class="nav-item nav-toggle"> <button class="hamburger hamburger-cancel"> <span class="icon"></span>
                     </button> </li>
@@ -90,7 +91,7 @@
             </p>
             <p id="signatories">
                 <span class="bold">Signed by:</span>
-                <ul id="signatories-list"> </ul>
+                <ul id="signatories-list" class="list"> </ul>
             </p>
         </section>
         <section id="faqs">
@@ -199,6 +200,12 @@
                 we simply cannot trust these companies with the future of our planet. &nbsp;Shell’s decision to purchase a tankard of Russian oil in the midst of this crisis represents yet another example of the industry’s commitment to profit-making
                 at the expense of all standards of basic morality and human decency.</p>
         </section>
+        <section id="coverage">
+            <h2>Coverage</h2>
+            <ul id="coverage-list" class="list">
+
+            </ul>
+        </section>
         <section id="contact">
             <h2>Contact us</h2>
             <p>
@@ -225,18 +232,39 @@
     }
     hamburger.addEventListener("click", () => toggleNav());
     window.onload = async() => {
-        const list = document.querySelector("#signatories-list");
-        const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRjE-lt2ZFM4HDMjhpZi_cUxFVB2GZsgDVpGxo8XcRfsa3gWo_brXCU2lAw9ToNWWQPgBLLYGUfOUFk/pub?output=csv");
-        if (response.ok) {
-            const signatories = (await response.text()).split("\n").map((s) => s.substring(1, s.length - 2));
+        const sig_list = document.querySelector("#signatories-list");
+        const sig_response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRjE-lt2ZFM4HDMjhpZi_cUxFVB2GZsgDVpGxo8XcRfsa3gWo_brXCU2lAw9ToNWWQPgBLLYGUfOUFk/pub?output=csv");
+        if (sig_response.ok) {
+            const signatories = (await sig_response.text()).split("\n").map((s) => s.substring(1, s.length - 2));
             for (let signatory of signatories) {
                 const li = document.createElement("li");
                 li.innerText = signatory;
-                list.appendChild(li);
+                sig_list.appendChild(li);
             }
         } else {
-            console.error(response.statusText);
-            console.error(await response.text());
+            console.error(sig_response.statusText);
+            console.error(await sig_response.text());
+        }
+
+        const cov_list = document.querySelector("#coverage-list");
+        const cov_response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vS8Y9zhsZMDv_N1jlVm9bkx5E2Ku-dsg0cq59NhmbECqVYJjN4flAG-BknHhnWtz2J_ZQqky740OVQ-/pub?output=csv");
+        if (cov_response.ok) {
+            const coverage = (await cov_response.text()).split("\n").map((s) => s.split(","));
+            coverage.shift();
+            for (let article of coverage) {
+                if (article.length === 4) {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.innerText = article[0];
+                    a.href = article[2];
+                    a.target = "_blank";
+                    li.appendChild(a);
+                    cov_list.appendChild(li);
+                }
+            }
+        } else {
+            console.error(cov_response.statusText);
+            console.error(await cov_response.text());
         }
     }
 </script>

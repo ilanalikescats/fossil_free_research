@@ -107,11 +107,11 @@ section {
     padding: 1rem 0;
 }
 
-#signatories-list {
+.list {
     padding: 1em;
 }
 
-#signatories-list>li+li {
+.list>li+li {
     margin-top: 1rem;
 }
 
